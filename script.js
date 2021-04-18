@@ -16,27 +16,8 @@
 // WHEN the game is over
 // THEN I can save my initials and my score
 
-
-
-
-
-
-// Slide 6
-// Question #5
-// A very useful tool used during development
-// and debugging for printing content to the
-// debugger is:
-// 1.      JavaScript
-// 2.      Terminal/bash
-// 3.      For loops
-// 4.      Console.log
-
-// Slide 7
-// All done!
-// Your final score is ___.
-// Enter initials: _____            Submit Button
-
-// Slide 8
- 
-// Highscores list
-// Go back button                 Clear Highscores button
+//when the start button is pressed, the timer begins counting down and the first question appears
+//when a selection is made, the next question appears, a small message displays whether your selection was correct or wrong
+// if a wrong selection is made, ten seconds are deducted from the time 
+//when the quiz is over, display ALL DONE and final score as time left and form for initials and high score
+//submit initials and high score to storage to display
