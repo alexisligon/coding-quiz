@@ -15,73 +15,30 @@
     </header>
 
     <main>
-        <section class="questions">
+        <section id="intro">
             <h2>Coding Quiz Challenge</h2>
             <p>Try to answer the following questions within the time limit.</p>
             <p>Keeep in mind the incorrect answers will penalize your score-time by ten seconds!</p>
+            <button id="starter">Start Quiz</button>
         </section>
 
-        <section class="questions">
-            <h2>Question #1</h2>
-            <h3>Commonly used Data Types do not include:</h3>
+        <section class="questions" id="one">
+            <h2 class="questionNumber"></h2>
+            <h3 class="questionTitle"></h3>
             <ol>
-                <li>Strings</li>
-                <li>Booleans</li>
-                <li>Alerts</li>
-                <li>Numbers</li>
+                <li class="firstAnswer"></li>
+                <li class="secondAnswer"></li>
+                <li class="thirdAnswer"></li><!--correct-->
+                <li class="fourthAnswer"></li>
             </ol>
             <div id="message"></div>
         </section>
 
-        <section class="questions">
-            <h2>Question #2</h2>
-            <h3>The condition in an if/else statement is enclosed within: _______.</h3>
-            <ol>
-                <li>Quotes</li>
-                <li>Curly brackets</li>
-                <li>Parenthesis</li>
-                <li>Square brackets</li>
-            </ol>
-            <div id="message"></div>
-        </section>
-
-        <section class="questions">
-            <h2>Question #3</h2>
-            <h3>Arrays in Javascript can be used to store _______.</h3>
-            <ol>
-                <li>Numbers and Strings</li>
-                <li>Other arrays</li>
-                <li>Booleans</li>
-                <li>All the above</li>
-            </ol>
-            <div id="message"></div>
-        </section>
+     
         
-        <section class="questions">
-            <h2>Question #4</h2>
-            <h3>String values must be enclosed within _______ when being assigned to variables.</h3>
-            <ol>
-                <li>Commas</li>
-                <li>Curly brackets</li>
-                <li>Quotes</li>
-                <li>Parenthesis</li>
-            </ol>
-            <div id="message"></div>
-        </section>
 
-        <section class="questions">
-            <h2>Question #5</h2>
-            <h3>A very useful tool used during development and debugging for printing content to the debugger is: </h3>
-            <ol>
-                <li>JavaScript</li>
-                <li>Terminal/bash</li>
-                <li>For Loops</li>
-                <li>Console.log</li>
-            </ol>
-            <div id="message"></div>
-        </section>
 
-        <section>
+        <!-- <section>
             <h2>All done!</h2>
             <h4>Your final score is __.</h4>
             <form method="POST">
@@ -98,7 +55,7 @@
             <div id="highscores-list"></div>
             <button id="try-again">Try Again</button>
             <button id="clear">Clear Highscores</button>
-        </section>
+        </section> --> 
 
     </main>
 
