@@ -27,7 +27,6 @@ var startBtn = document.querySelector("#starter");
 var submitBtn = document.querySelector("#submit");
 var tryAgainBtn = document.querySelector("#try-again");
 var clearBtn = document.querySelector("#clear");
-var answers = document.querySelectorAll("li");
 var section = document.querySelector(".questions");
 var intro = document.querySelector("#intro");
 var count = 0;
@@ -86,7 +85,6 @@ startBtn.addEventListener("click", function () {
 }
 )
 
-
 function displayQuestions() {
     var questionNumber = document.querySelector(".questionNumber");
     var questionTitle = document.querySelector(".questionTitle");
@@ -98,7 +96,10 @@ function displayQuestions() {
 
     questionNumber.textContent = questions[count].questionNumber;
     questionTitle.textContent = questions[count].questionTitle;
-
+    firstAnswer.textContent = questions[count].firstAnswer;
+    secondAnswer.textContent = questions[count].secondAnswer;
+    thirdAnswer.textContent = questions[count].thirdAnswer;
+    fourthAnswer.textContent = questions[count].fourthAnswer;
 }
 
 
