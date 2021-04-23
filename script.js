@@ -115,11 +115,29 @@ var thirdBtn = document.querySelector("#thirdChoice");
 var fourthBtn = document.querySelector("#fourthChoice");
 
 //event listener for all buttons to proceed to next question
+//also to compare if the user clicked the right answer or wrong answer
 var i = 0, length = allBtn.length
 for (i; i < length; i++){
 allBtn[i].addEventListener("click", function() {
+    var corAns = parseInt(questions[count].correctAnswer.charAt(0))
+    if(corAns === 3){
+        var compareAns = "thirdChoice";
+    }
+    else{
+        var compareAns = "fourthChoice"
+    }
+    if (compareAns === this.id){
+        console.log(`correct answer`);
+        message.textContent = "correct!";
+    }
+    else {
+        message.textContent = "nope :p"
+    }
+
 
     count++;
     displayQuestions();
 })
 }
+
+
