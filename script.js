@@ -22,8 +22,6 @@
 //when the quiz is over, display ALL DONE and final score as time left and form for initials and high score
 //submit initials and high score to storage to display
 
-var timerCount;
-
 var startBtn = document.querySelector("#starter");
 var submitBtn = document.querySelector("#submit");
 var tryAgainBtn = document.querySelector("#try-again");
@@ -40,6 +38,8 @@ var fourthAnswer = document.querySelector("#fourthChoice");
 var correctAnswer;
 var message = document.querySelector("#message");
 var allBtn = document.querySelectorAll(".choices");
+var timerCount = 60;
+var timer = document.querySelector("#timer");
 
 //questions as objects in an array
 var questions = [{
@@ -93,6 +93,7 @@ startBtn.addEventListener("click", function () {
     //hide intro page
     intro.style.display = "none";
     //update values in sections
+    
     displayQuestions();
     startTimer();
 
@@ -143,6 +144,9 @@ allBtn[i].addEventListener("click", function() {
 
 //write a function for the timer
 function startTimer(){
-var timer = document.getElementById("timer");
-timerCount = 60;
-timer.textContent = ("Time:" + timerCount)
+    var timerInterval = setInterval(function(){
+        timerCount--;
+        timer.textContent = ("Time: " + timerCount);
+
+    },1000)
+};
