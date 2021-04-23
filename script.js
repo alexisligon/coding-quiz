@@ -127,17 +127,23 @@ allBtn[i].addEventListener("click", function() {
         var compareAns = "fourthChoice"
     }
     if (compareAns === this.id){
-        console.log(`correct answer`);
+        
         message.textContent = "correct!";
+        //only show text for 3 seconds
     }
     else {
+        //subtract ten seconds
         message.textContent = "nope :p"
+        //only show text for 3 seconds
     }
 
 
     count++;
     displayQuestions();
+    //stop function after last question
+    //stop timer after last question
+    //display final score with form to enter initials
 })
 }
 
-
+//write a function for the timer
