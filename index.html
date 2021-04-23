@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="style.css">
     <title>Coding Quiz</title>
 </head>
+
 <body>
     <header>
         <h1>View Highscores</h1>
@@ -25,42 +27,43 @@
         <section class="questions" id="one">
             <h2 class="questionNumber"></h2>
             <h3 class="questionTitle"></h3>
-            
-                <button type= "button" class="choices" id="firstChoice" data-id="1"></button>
-                <button type= "button" class="choices" id="secondChoice" data-id="2"></button>
-                <button type= "button" class="choices" id="thirdChoice" data-id="3"></button>
-                <button type= "button" class="choices" id="fourthChoice" data-id="4"></button>
-            
+
+            <button type="button" class="choices" id="firstChoice" data-id="1"></button>
+            <button type="button" class="choices" id="secondChoice" data-id="2"></button>
+            <button type="button" class="choices" id="thirdChoice" data-id="3"></button>
+            <button type="button" class="choices" id="fourthChoice" data-id="4"></button>
+
             <div id="message"></div>
         </section>
 
-     
-        
 
 
-        <!-- <section>
+
+
+        <section id="final">
             <h2>All done!</h2>
-            <h4>Your final score is __.</h4>
+            <h4 id="score">Your final score is __.</h4>
             <form method="POST">
                 <div>
-                <label for="initials">Initials</label>
-                <input type="text" name="initials" id="initials" placeholder="" />
+                    <label for="initials">Initials</label>
+                    <input type="text" name="initials" id="initials" placeholder="" />
                 </div>
                 <button id="submit">Submit</button>
             </form>
         </section>
 
-        <section>
+        <!-- <section>
             <h2>Highscores List</h2>
             <div id="highscores-list"></div>
             <button id="try-again">Try Again</button>
             <button id="clear">Clear Highscores</button>
-        </section> --> 
+        </section> -->
 
     </main>
 
 
-    
+
     <script src="script.js"></script>
 </body>
+
 </html>

@@ -40,6 +40,9 @@ var message = document.querySelector("#message");
 var allBtn = document.querySelectorAll(".choices");
 var timerCount = 60;
 var timer = document.querySelector("#timer");
+var score = document.getElementById("score");
+var final = document.getElementById("final");
+var timerInterval;
 
 //questions as objects in an array
 var questions = [{
@@ -92,23 +95,29 @@ var questions = [{
 startBtn.addEventListener("click", function () {
     //hide intro page
     intro.style.display = "none";
+    final.style.display = "none";
     //update values in sections
     
     displayQuestions();
     startTimer();
-
 }
 )
 
 //function to display next question
 function displayQuestions() {
-    
+    if (count < 5) { //displays all questions within index
     questionNumber.textContent = questions[count].questionNumber;
     questionTitle.textContent = questions[count].questionTitle;
     firstAnswer.textContent = questions[count].firstAnswer;
     secondAnswer.textContent = questions[count].secondAnswer;
     thirdAnswer.textContent = questions[count].thirdAnswer;
     fourthAnswer.textContent = questions[count].fourthAnswer;
+    }
+    else {//if over index, hide questions section and display final score and initials form
+        section.style.display = "none";
+        final.style.display = "inline-block";
+        clearInterval(timerInterval);
+    }
     
 };
 
@@ -123,30 +132,41 @@ var fourthBtn = document.querySelector("#fourthChoice");
 var i = 0, length = allBtn.length
 for (i; i < length; i++){
 allBtn[i].addEventListener("click", function() {
-    var correct = questions[count].correctAnswer
+    var correct = questions[count].correctAnswer//grabs the correct answer from the object
 
-
-    if (correct === this.getAttribute('data-id')) {
-        console.log('correct!')
+    if (correct === this.getAttribute('data-id')) {//compares correct answer to answer selected
+        message.textContent = ("correct!");//if correct, display correct
+        
     } else {
-        console.log('wrong!')
+        message.textContent = ("incorrect");//else subtract ten seconds and display incorrect
+        timerCount = timerCount - 10;
     }
-  
 
-
-    count++;
+    count++;//go to next object in array and display next question
     displayQuestions();
-    //stop function after last question
+
     //stop timer after last question
-    //display final score with form to enter initials
+    //display final score with form to enter initials 
 })
 }
-
 //write a function for the timer
 function startTimer(){
-    var timerInterval = setInterval(function(){
+        timerInterval = setInterval(function(){
         timerCount--;
         timer.textContent = ("Time: " + timerCount);
 
+        if (timerCount === 0) {
+            clearInterval(timerInterval);
+            timer.textContent = ("Time: " + timerCount);
+            // gameOver ();
+        }
+
     },1000)
 };
+
+//game over function
+// function gameOver () {
+//     clearInterval(timerInterval);
+//     score.textContent = timerCount;
+
+// }
