@@ -22,7 +22,8 @@
 //when the quiz is over, display ALL DONE and final score as time left and form for initials and high score
 //submit initials and high score to storage to display
 
-var timer = 0;
+var timerCount;
+
 var startBtn = document.querySelector("#starter");
 var submitBtn = document.querySelector("#submit");
 var tryAgainBtn = document.querySelector("#try-again");
@@ -48,7 +49,7 @@ var questions = [{
     secondAnswer: "2.Booleans",
     thirdAnswer: "3.Alerts",
     fourthAnswer: "4.Numbers",
-    correctAnswer: "3.Alerts",
+    correctAnswer: "3",
 },
 
 {
@@ -58,7 +59,7 @@ var questions = [{
     secondAnswer: "2.Curly Brackets",
     thirdAnswer: "3.Parenthesis",
     fourthAnswer: "4.Square Brackets",
-    correctAnswer: "3.Parenthesis",
+    correctAnswer: "3",
 },
 {
     questionNumber: "Question #3",
@@ -67,7 +68,7 @@ var questions = [{
     secondAnswer: "2.Other arrays",
     thirdAnswer: "3.Booleans",
     fourthAnswer: "4.All the above",
-    correctAnswer: "4.All the above",
+    correctAnswer: "4",
 },
 {
     questionNumber: "Question #4",
@@ -76,7 +77,7 @@ var questions = [{
     secondAnswer: "2.Curly brackets",
     thirdAnswer: "3.Quotes",
     fourthAnswer: "4.Parenthesis",
-    correctAnswer: "3.Quotes",
+    correctAnswer: "3",
 },
 {
     questionNumber: "Question #5",
@@ -85,14 +86,16 @@ var questions = [{
     secondAnswer: "2.Terminal/bash",
     thirdAnswer: "3.For Loops",
     fourthAnswer: "4.Console.log",
-    correctAnswer: "4.Console.log",
+    correctAnswer: "4",
 }]
 
 startBtn.addEventListener("click", function () {
     //hide intro page
     intro.style.display = "none";
     //update values in sections
-    displayQuestions ();
+    displayQuestions();
+    startTimer();
+
 }
 )
 
@@ -119,23 +122,15 @@ var fourthBtn = document.querySelector("#fourthChoice");
 var i = 0, length = allBtn.length
 for (i; i < length; i++){
 allBtn[i].addEventListener("click", function() {
-    var corAns = parseInt(questions[count].correctAnswer.charAt(0))
-    if(corAns === 3){
-        var compareAns = "thirdChoice";
+    var correct = questions[count].correctAnswer
+
+
+    if (correct === this.getAttribute('data-id')) {
+        console.log('correct!')
+    } else {
+        console.log('wrong!')
     }
-    else{
-        var compareAns = "fourthChoice"
-    }
-    if (compareAns === this.id){
-        
-        message.textContent = "correct!";
-        //only show text for 3 seconds
-    }
-    else {
-        //subtract ten seconds
-        message.textContent = "nope :p"
-        //only show text for 3 seconds
-    }
+  
 
 
     count++;
@@ -147,3 +142,7 @@ allBtn[i].addEventListener("click", function() {
 }
 
 //write a function for the timer
+function startTimer(){
+var timer = document.getElementById("timer");
+timerCount = 60;
+timer.textContent = ("Time:" + timerCount)
