@@ -194,3 +194,11 @@ function saveScore() {
         scoreList.textContent = (user.initials +"-"+ user.score);
     }
 }
+
+function refreshPage () {
+    window.location.reload();
+}
+tryAgainBtn.addEventListener("click", function(event){
+    event.preventDefault();
+    refreshPage();
+})
