@@ -120,6 +120,7 @@ function displayQuestions() {
     }
     else {//if over index, hide questions section and display final score and initials form
         clearInterval(timerInterval);
+        timer.style.display = "none";
         section.style.display = "none";
         final.style.display = "inline-block";
         score.textContent = (timerCount);
@@ -163,28 +164,6 @@ function startTimer(){
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 var initialsInput = document.getElementById("initials");
 var scoreForm = document.getElementById ("scoreForm");
 var highScores = document.getElementById ("scoreSection");
@@ -198,30 +177,20 @@ submitBtn.addEventListener("click", function(event) {
     final.style.display = "none";//hide form
     highScores.style.display = "inline-block";//show scores list
     saveScore();
-    renderLastScore();
 })
 
 function saveScore() {
 
-    var initials = document.querySelector("#initials").value;
-    var score = timerCount;
+    var user = {
+        initials: initialsInput.value,
+        score: timerCount,
+    }
+
+    localStorage.setItem("user", JSON.stringify(user));
+
+    var lastScore = JSON.parse(localStorage.getItem("user"));
     
-    localStorage.setItem("initials", initials);
-    localStorage.setItem("score", score);
-
+    if (lastScore !== null ) {
+        scoreList.textContent = (user.initials +"-"+ user.score);
+    }
 }
-
-function renderLastScore() {
-    var initials = localStorage.getItem("initials");
-    var score = localStorage.getItem("score");
-
-    scoreList.textContent = (initials +" - "+ score);
-}
-
-//function to display high scores list
-
-
-
-//render highscores and initials as a list
-//render a new li for each score
-//get stored scores from localStorage
