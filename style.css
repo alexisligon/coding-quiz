@@ -1,3 +1,59 @@
 #final, #scoreSection {
     display: none;
 }
+
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: blanchedalmond;
+    color: rgb(62, 9, 78);
+}
+
+header {
+    background-color: burlywood;
+    color:rgb(78, 9, 9);
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    font-size: 30px;
+}
+
+#timer {
+    color: red;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
+    align-items: center;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+h3 {
+    font-size: 25px;
+}
+
+h4 {
+    font-size: 20px;
+}
+
+p {
+    font-size: 16px
+}
+
+#message {
+    font-size: 16px;
+    font-style: italic;
+}
+
+button {
+    background-color: rgb(147, 238, 147);
+    color: black;
+}
+
+ul {
+    font-size: 20px;
+}

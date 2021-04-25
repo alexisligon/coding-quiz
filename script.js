@@ -101,32 +101,32 @@ function displayQuestions() {
         final.style.display = "inline-block";
         score.textContent = (timerCount);
     }
-    
+
 };
 
 
 //event listener for all buttons to proceed to next question
 //also to compare if the user clicked the right answer or wrong answer
 var i = 0, length = allBtn.length
-for (i; i < length; i++){
-    allBtn[i].addEventListener("click", function() {
+for (i; i < length; i++) {
+    allBtn[i].addEventListener("click", function () {
         var correct = questions[count].correctAnswer//grabs the correct answer from the object
-        
+
         if (correct === this.getAttribute('data-id')) {//compares correct answer to answer selected
             message.textContent = ("correct!");//if correct, display correct
-            
+
         } else {
             message.textContent = ("incorrect");//else subtract ten seconds and display incorrect
             timerCount = timerCount - 10;
         }
-        
+
         count++;//go to next object in array and display next question
         displayQuestions();
     })
 }
 //write a function for the timer
-function startTimer(){
-    timerInterval = setInterval(function(){
+function startTimer() {
+    timerInterval = setInterval(function () {
         timerCount--;
         timer.textContent = (timerCount);
 
@@ -135,20 +135,20 @@ function startTimer(){
             timer.textContent = (timerCount);
             // gameOver ();
         }
-        
-    },1000)
+
+    }, 1000)
 };
 
+var initialsInput = document.getElementById("initials");//input of initials
+var scoreForm = document.getElementById("scoreForm");//entire form
+var highScores = document.getElementById("scoreSection");//entire section of scores list display
+var scoreList = document.getElementById("scoreList");//list element
 
-var initialsInput = document.getElementById("initials");
-var scoreForm = document.getElementById ("scoreForm");
-var highScores = document.getElementById ("scoreSection");
-var scoreList = document.getElementById ("scoreList");
 
 
 
 //highscore form with initials submission
-submitBtn.addEventListener("click", function(event) {
+submitBtn.addEventListener("click", function (event) {
     event.preventDefault();
     final.style.display = "none";//hide form
     highScores.style.display = "inline-block";//show scores list
@@ -165,16 +165,16 @@ function saveScore() {
     localStorage.setItem("user", JSON.stringify(user));
 
     var lastScore = JSON.parse(localStorage.getItem("user"));
-    
-    if (lastScore !== null ) {
-        scoreList.textContent = (user.initials +"-"+ user.score);
+
+    if (lastScore !== null) {
+        scoreList.textContent = (user.initials + "-" + user.score);
     }
 }
 
-function refreshPage () {
+function refreshPage() {
     window.location.reload();
 }
-tryAgainBtn.addEventListener("click", function(event){
+tryAgainBtn.addEventListener("click", function (event) {
     event.preventDefault();
     refreshPage();
 })
