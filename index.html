@@ -20,7 +20,7 @@
         <section id="intro">
             <h2>Coding Quiz Challenge</h2>
             <p>Try to answer the following questions within the time limit.</p>
-            <p>Keeep in mind the incorrect answers will penalize your score-time by ten seconds!</p>
+            <p>Keep in mind the incorrect answers will penalize your score-time by ten seconds!</p>
             <button id="starter">Start Quiz</button>
         </section>
 
@@ -42,8 +42,9 @@
 
         <section id="final">
             <h2>All done!</h2>
-            <h4 id="score">Your final score is __.</h4>
-            <form method="POST">
+            <form id="scoreForm" method="POST">
+                <h4>Your final score is :</h4>
+                <h3 id="score"></h3>
                 <div>
                     <label for="initials">Initials</label>
                     <input type="text" name="initials" id="initials" placeholder="" />
@@ -52,12 +53,12 @@
             </form>
         </section>
 
-        <!-- <section>
+        <section id="scoreSection">
             <h2>Highscores List</h2>
-            <div id="highscores-list"></div>
+            <p id="scoreList"></p>
             <button id="try-again">Try Again</button>
             <button id="clear">Clear Highscores</button>
-        </section> -->
+        </section>
 
     </main>
 

@@ -40,9 +40,14 @@ var message = document.querySelector("#message");
 var allBtn = document.querySelectorAll(".choices");
 var timerCount = 60;
 var timer = document.querySelector("#timer");
-var score = document.getElementById("score");
-var final = document.getElementById("final");
+var score = document.getElementById("score");//final score
+var final = document.getElementById("final");//section for after quiz
 var timerInterval;
+//variable for all answer buttons
+var firstBtn = document.querySelector("#firstChoice");
+var secondBtn = document.querySelector("#secondChoice");
+var thirdBtn = document.querySelector("#thirdChoice");
+var fourthBtn = document.querySelector("#fourthChoice");
 
 //questions as objects in an array
 var questions = [{
@@ -92,12 +97,12 @@ var questions = [{
     correctAnswer: "4",
 }]
 
+//start of quiz
 startBtn.addEventListener("click", function () {
     //hide intro page
     intro.style.display = "none";
     final.style.display = "none";
     //update values in sections
-    
     displayQuestions();
     startTimer();
 }
@@ -105,68 +110,118 @@ startBtn.addEventListener("click", function () {
 
 //function to display next question
 function displayQuestions() {
-    if (count < 5) { //displays all questions within index
-    questionNumber.textContent = questions[count].questionNumber;
-    questionTitle.textContent = questions[count].questionTitle;
-    firstAnswer.textContent = questions[count].firstAnswer;
-    secondAnswer.textContent = questions[count].secondAnswer;
-    thirdAnswer.textContent = questions[count].thirdAnswer;
-    fourthAnswer.textContent = questions[count].fourthAnswer;
+    if (count < questions.length) { //displays all questions within index
+        questionNumber.textContent = questions[count].questionNumber;
+        questionTitle.textContent = questions[count].questionTitle;
+        firstAnswer.textContent = questions[count].firstAnswer;
+        secondAnswer.textContent = questions[count].secondAnswer;
+        thirdAnswer.textContent = questions[count].thirdAnswer;
+        fourthAnswer.textContent = questions[count].fourthAnswer;
     }
     else {//if over index, hide questions section and display final score and initials form
+        clearInterval(timerInterval);
         section.style.display = "none";
         final.style.display = "inline-block";
-        clearInterval(timerInterval);
+        score.textContent = (timerCount);
     }
     
 };
 
-//variable for all answer buttons
-var firstBtn = document.querySelector("#firstChoice");
-var secondBtn = document.querySelector("#secondChoice");
-var thirdBtn = document.querySelector("#thirdChoice");
-var fourthBtn = document.querySelector("#fourthChoice");
 
 //event listener for all buttons to proceed to next question
 //also to compare if the user clicked the right answer or wrong answer
 var i = 0, length = allBtn.length
 for (i; i < length; i++){
-allBtn[i].addEventListener("click", function() {
-    var correct = questions[count].correctAnswer//grabs the correct answer from the object
-
-    if (correct === this.getAttribute('data-id')) {//compares correct answer to answer selected
-        message.textContent = ("correct!");//if correct, display correct
+    allBtn[i].addEventListener("click", function() {
+        var correct = questions[count].correctAnswer//grabs the correct answer from the object
         
-    } else {
-        message.textContent = ("incorrect");//else subtract ten seconds and display incorrect
-        timerCount = timerCount - 10;
-    }
-
-    count++;//go to next object in array and display next question
-    displayQuestions();
-
-    //stop timer after last question
-    //display final score with form to enter initials 
-})
+        if (correct === this.getAttribute('data-id')) {//compares correct answer to answer selected
+            message.textContent = ("correct!");//if correct, display correct
+            
+        } else {
+            message.textContent = ("incorrect");//else subtract ten seconds and display incorrect
+            timerCount = timerCount - 10;
+        }
+        
+        count++;//go to next object in array and display next question
+        displayQuestions();
+    })
 }
 //write a function for the timer
 function startTimer(){
-        timerInterval = setInterval(function(){
+    timerInterval = setInterval(function(){
         timerCount--;
-        timer.textContent = ("Time: " + timerCount);
+        timer.textContent = (timerCount);
 
         if (timerCount === 0) {
             clearInterval(timerInterval);
-            timer.textContent = ("Time: " + timerCount);
+            timer.textContent = (timerCount);
             // gameOver ();
         }
-
+        
     },1000)
 };
 
-//game over function
-// function gameOver () {
-//     clearInterval(timerInterval);
-//     score.textContent = timerCount;
 
-// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var initialsInput = document.getElementById("initials");
+var scoreForm = document.getElementById ("scoreForm");
+var highScores = document.getElementById ("scoreSection");
+var scoreList = document.getElementById ("scoreList");
+
+
+
+//highscore form with initials submission
+submitBtn.addEventListener("click", function(event) {
+    event.preventDefault();
+    final.style.display = "none";//hide form
+    highScores.style.display = "inline-block";//show scores list
+    saveScore();
+    renderLastScore();
+})
+
+function saveScore() {
+
+    var initials = document.querySelector("#initials").value;
+    var score = timerCount;
+    
+    localStorage.setItem("initials", initials);
+    localStorage.setItem("score", score);
+
+}
+
+function renderLastScore() {
+    var initials = localStorage.getItem("initials");
+    var score = localStorage.getItem("score");
+
+    scoreList.textContent = (initials +" - "+ score);
+}
+
+//function to display high scores list
+
+
+
+//render highscores and initials as a list
+//render a new li for each score
+//get stored scores from localStorage
